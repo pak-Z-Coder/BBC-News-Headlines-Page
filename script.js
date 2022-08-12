@@ -25,7 +25,7 @@ function fetchNews(){
                 populate(JSON.parse(xhr.response));
             }
             else{
-                newsContainer.innerHTML=`Error Fetching News from Server.` 
+                newsContainer.innerHTML=`Error Fetching News from Server. ${xhr.status}` 
             }
         }, 700);
     }
@@ -44,13 +44,13 @@ function populate(response){
             console.log(time);
             html+=`<div class="xl:w-1/4 md:w-1/2 p-4" >
             <div class="bg-gray-100 hover:scale-105 duration-150 p-6 rounded-lg">
-            <a href="${news.url}">
+            <a href="${news.url}" target="_blank">
             <img class="h-40 rounded w-full object-cover object-center mb-6" src="${news.urlToImage}" alt="content">
             </a>
             <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">TITLE</h3>
             <h2 class="text-lg text-gray-900 font-medium title-font mb-4">${news.title}</h2>
             <p class="leading-relaxed text-base" id="description">${news.description}</p>
-            <p class="text-lg text-gray-900 font-medium title-font">${date} : ${hours}</p>
+            <p class="text-lg text-gray-900 font-medium title-font">${date} / ${hours}</p>
             </div>
             </div></div>`
         }
